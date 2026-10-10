@@ -30,24 +30,40 @@ public class Player : MonoBehaviour
     {
         UIManger.instance.UpdateUI(HP,MP);
     }
-    public void heal()
+    public void heal(InputAction.CallbackContext context)
     {
-        HP += 10;
-        updateUI();
+        if (context.performed)
+        {
+            HP += 10;
+            updateUI();
+        }
+        
     }
-    public void takeDamage()
+    public void takeDamage(InputAction.CallbackContext context)
     {
-        HP -= 10;
-        updateUI();
+        if (context.performed)
+        {
+            HP -= 10;
+            updateUI();
+        }
+        
     }
-    public void RegenMana()
+    public void RegenMana(InputAction.CallbackContext context)
     {
-        MP += 5;
-        updateUI();
+        if (context.performed)
+        {
+            MP += 5;
+            updateUI();
+        }
+        
     }
-    public void CastSpell()
+    public void CastSpell(InputAction.CallbackContext context)
     {
-        MP -= 5;
-        updateUI();
+        if (context.performed)
+        {
+            MP -= 5;
+            updateUI();
+        }
+        
     }
 }
