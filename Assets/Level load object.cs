@@ -9,14 +9,14 @@ public class Levelloadobject : MonoBehaviour
     {
         Debug.Log("tried to load " + levelToLoad);
         GameManager.instance.levelManager.LoadLevel(levelToLoad);
-        //if (LoadWithUi)
-        //{
-        //    GameManager.instance.levelManager.LoadUiScene();
-        //}
-        //else if (UnloadUIScene)
-        //{
-        //    GameManager.instance.levelManager.UnloadUiScene();
-        //}
+        if (LoadWithUi)
+        {
+            GameManager.instance.levelManager.LoadUiScene();
+        }
+        else if (UnloadUIScene)
+        {
+            GameManager.instance.levelManager.UnloadUiScene();
+        }
     }
     public void QuitGame()
     {
