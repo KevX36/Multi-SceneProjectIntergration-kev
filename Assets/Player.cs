@@ -1,0 +1,53 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Player : MonoBehaviour
+{
+    Vector2 move;
+    public float speed = 4;
+    public Rigidbody rb;
+    public int HP = 100;
+    public int MP = 30;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        
+    }
+    public void Move(InputAction.CallbackContext context)
+    {
+        move = context.ReadValue<Vector2>();
+        Debug.Log("getting movement");
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 move3d = new Vector3(move.x, 0, move.y);
+        
+        rb.AddForce(move3d * speed);
+    }
+    public void updateUI()
+    {
+        UIManger.instance.UpdateUI(HP,MP);
+    }
+    public void heal()
+    {
+        HP += 10;
+        updateUI();
+    }
+    public void takeDamage()
+    {
+        HP -= 10;
+        updateUI();
+    }
+    public void RegenMana()
+    {
+        MP += 5;
+        updateUI();
+    }
+    public void CastSpell()
+    {
+        MP -= 5;
+        updateUI();
+    }
+}
